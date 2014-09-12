@@ -1,7 +1,7 @@
 var makeQueue = function(){
 	var someInstance = {
 		storage: {},
-		totalSize: 0,
+		last: 0,
 		first: 0
 	};
 
@@ -13,12 +13,12 @@ var makeQueue = function(){
 var queueMethods = {};
 
 queueMethods.enqueue = function(val) {
-	this.storage[this.totalSize+this.first] = val;
-	this.totalSize++;
+	this.storage[this.last+this.first] = val;
+	this.last++;
 };
 queueMethods.dequeue = function() {
-	if (this.totalSize > 0) {
-		this.totalSize--;
+	if (this.last > 0) {
+		this.last--;
 		var results = this.storage[this.first];
 		delete this.storage[this.first];
 		this.first++;
@@ -26,6 +26,6 @@ queueMethods.dequeue = function() {
 	return results;
 };
 queueMethods.size = function() {
-	return this.totalSize;
+	return this.last;
 };
 

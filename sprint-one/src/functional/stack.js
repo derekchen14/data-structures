@@ -27,3 +27,4 @@ var makeStack = function(){
   return someInstance;
 };
 
+// instance objects = will not change

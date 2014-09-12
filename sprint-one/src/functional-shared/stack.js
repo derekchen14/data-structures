@@ -1,7 +1,7 @@
 var makeStack = function() {
 	var someInstance = {
 		storage: {},
-		totalSize: 0
+		last: 0
 	};
 
 	_.extend(someInstance, stackMethods);
@@ -12,19 +12,21 @@ var makeStack = function() {
 var stackMethods = {};
 
 stackMethods.push = function(val) {
-	this.storage[this.totalSize] = val;
-	this.totalSize++;
+	this.storage[this.last] = val;
+	this.last++;
 };
 stackMethods.pop = function() {
-	if (this.totalSize > 0) {
-		this.totalSize--;
-		var results = this.storage[this.totalSize];
-		delete this.storage[this.totalSize];
+	if (this.last > 0) {
+		this.last--;
+		var results = this.storage[this.last];
+		delete this.storage[this.last];
 	}
 	return results;
 };
 stackMethods.size = function() {
-	return this.totalSize;
+	return this.last;
 };
 
 
+// instance objects = will not change if you change the method;
+// will change if you change a property of a method

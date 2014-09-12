@@ -1,4 +1,6 @@
 var Graph = function(){
+	this.edge = 0;
+	this.vertex = 0;
 };
 
 Graph.prototype.addNode = function(newNode, toNode){

@@ -1,22 +1,24 @@
 var Stack = function() {
 	this.storage = {};
-	this.totalSize = 0;
+	this.last = 0;
 };
 
 Stack.prototype.push = function(val) {
-	this.storage[this.totalSize] = val;
-	this.totalSize++;
+	this.storage[this.last] = val;
+	this.last++;
 };
 Stack.prototype.pop = function() {
-	if (this.totalSize > 0) {
-		this.totalSize--;
-		var results = this.storage[this.totalSize];
-		delete this.storage[this.totalSize];
+	if (this.last > 0) {
+		this.last--;
+		var results = this.storage[this.last];
+		delete this.storage[this.last];
 	}
 	return results;
 };
 Stack.prototype.size = function() {
-	return this.totalSize;
+	return this.last;
 };
 
 // var newStack = new Stack();
+
+// instance objects = will change;
